@@ -3,6 +3,8 @@
 A fully local, offline Speech-to-Text application powered by **OpenAI Whisper**.  
 No cloud dependency, no API key — everything runs on your machine.
 
+> **🪟 Windows users:** See [QUICKSTART_WINDOWS.md](QUICKSTART_WINDOWS.md) for a complete step-by-step guide to get started with Visual Studio Code.
+
 ---
 
 ## Project Structure
