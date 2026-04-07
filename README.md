@@ -38,6 +38,8 @@ pydub requires ffmpeg to read MP3 and other formats.
 | macOS         | `brew install ffmpeg`                        |
 | Windows       | Download from <https://ffmpeg.org/download.html> and add to PATH |
 
+> **Windows users:** If you encounter errors related to pydub or ffmpeg not found, see [WINDOWS_SETUP.md](WINDOWS_SETUP.md) for detailed installation instructions.
+
 ---
 
 ## Installation

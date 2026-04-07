@@ -90,6 +90,25 @@ def configure_ffmpeg() -> Optional[str]:
 
 
 # ---------------------------------------------------------------------------
+# Auto-configure pydub on module import (critical for Windows)
+# ---------------------------------------------------------------------------
+
+# Configure pydub with ffmpeg as soon as this module is imported.
+# This prevents "FileNotFoundError" in pydub.utils when trying to use
+# AudioSegment without explicitly calling check_ffmpeg() first.
+_auto_configured_path = configure_ffmpeg()
+if _auto_configured_path:
+    logger.debug("Auto-configured ffmpeg for pydub at module import.")
+elif sys.platform == "win32":
+    # On Windows, provide helpful guidance if ffmpeg is not found
+    logger.warning(
+        "ffmpeg not found on PATH or in common Windows locations. "
+        "Please install ffmpeg and add it to PATH, or place it in one of: "
+        f"{', '.join(_WINDOWS_FFMPEG_HINTS)}"
+    )
+
+
+# ---------------------------------------------------------------------------
 # Validation helpers
 # ---------------------------------------------------------------------------
 
