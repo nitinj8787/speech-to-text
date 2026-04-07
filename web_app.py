@@ -272,13 +272,18 @@ def download_file(filename: str):
 
 if __name__ == "__main__":
     if not check_ffmpeg():
-        print(
-            "ERROR: ffmpeg not found on PATH.\n"
-            "  Ubuntu/Debian: sudo apt install ffmpeg\n"
-            "  macOS:         brew install ffmpeg\n"
-            "  Windows:       https://ffmpeg.org/download.html",
-            file=sys.stderr,
-        )
+        error_msg = "ERROR: ffmpeg not found on PATH.\n"
+        if sys.platform == "win32":
+            error_msg += (
+                "  Windows: See WINDOWS_SETUP.md for detailed installation instructions\n"
+                "           OR download from https://ffmpeg.org/download.html"
+            )
+        else:
+            error_msg += (
+                "  Ubuntu/Debian: sudo apt install ffmpeg\n"
+                "  macOS:         brew install ffmpeg"
+            )
+        print(error_msg, file=sys.stderr)
         sys.exit(1)
 
     host = os.getenv("STT_HOST", "0.0.0.0")

@@ -164,12 +164,18 @@ def main() -> None:
     # ------------------------------------------------------------------ #
     logger.info("Checking system dependencies ...")
     if not check_ffmpeg():
-        logger.error(
-            "ffmpeg was not found on PATH.\n\n"
-            "  Install on Ubuntu/Debian :  sudo apt install ffmpeg\n"
-            "  Install on macOS         :  brew install ffmpeg\n"
-            "  Install on Windows       :  https://ffmpeg.org/download.html\n"
-        )
+        error_msg = "ffmpeg was not found on PATH.\n\n"
+        if sys.platform == "win32":
+            error_msg += (
+                "  Windows: See WINDOWS_SETUP.md for detailed installation instructions\n"
+                "           OR download from https://ffmpeg.org/download.html and add to PATH\n"
+            )
+        else:
+            error_msg += (
+                "  Install on Ubuntu/Debian :  sudo apt install ffmpeg\n"
+                "  Install on macOS         :  brew install ffmpeg\n"
+            )
+        logger.error(error_msg)
         sys.exit(1)
     logger.info("ffmpeg OK.")
 

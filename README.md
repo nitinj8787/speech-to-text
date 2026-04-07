@@ -3,6 +3,8 @@
 A fully local, offline Speech-to-Text application powered by **OpenAI Whisper**.  
 No cloud dependency, no API key — everything runs on your machine.
 
+> **🪟 Windows users:** See [QUICKSTART_WINDOWS.md](QUICKSTART_WINDOWS.md) for a complete step-by-step guide to get started with Visual Studio Code.
+
 ---
 
 ## Project Structure
@@ -37,6 +39,8 @@ pydub requires ffmpeg to read MP3 and other formats.
 | Ubuntu/Debian | `sudo apt install ffmpeg`                    |
 | macOS         | `brew install ffmpeg`                        |
 | Windows       | Download from <https://ffmpeg.org/download.html> and add to PATH |
+
+> **Windows users:** If you encounter errors related to pydub or ffmpeg not found, see [WINDOWS_SETUP.md](WINDOWS_SETUP.md) for detailed installation instructions.
 
 ---
 
