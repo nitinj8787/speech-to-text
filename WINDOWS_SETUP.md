@@ -121,59 +121,27 @@ Run VS Code or Command Prompt as Administrator if you encounter permission issue
 
 ## Testing Your Setup
 
-Create a test file `test_setup.py`:
+The repository includes a test script to verify your environment. Simply run:
 
-```python
-#!/usr/bin/env python3
-"""Test if the environment is properly configured."""
-
-import sys
-
-# Test 1: Python version
-print(f"✓ Python version: {sys.version}")
-
-# Test 2: Virtual environment
-try:
-    assert sys.prefix != sys.base_prefix
-    print(f"✓ Virtual environment active: {sys.prefix}")
-except AssertionError:
-    print("⚠ Warning: Not running in a virtual environment")
-
-# Test 3: Import pydub
-try:
-    from pydub import AudioSegment
-    print("✓ pydub imported successfully")
-except ImportError as e:
-    print(f"✗ Failed to import pydub: {e}")
-    sys.exit(1)
-
-# Test 4: Check ffmpeg
-try:
-    from audio_utils import check_ffmpeg
-    if check_ffmpeg():
-        print("✓ ffmpeg found and configured")
-    else:
-        print("✗ ffmpeg not found - see WINDOWS_SETUP.md for installation instructions")
-        sys.exit(1)
-except Exception as e:
-    print(f"✗ Error checking ffmpeg: {e}")
-    sys.exit(1)
-
-# Test 5: Import whisper
-try:
-    import whisper
-    print("✓ whisper imported successfully")
-except ImportError as e:
-    print(f"✗ Failed to import whisper: {e}")
-    sys.exit(1)
-
-print("\n🎉 All checks passed! Your environment is ready to use.")
-```
-
-Run it:
 ```cmd
 python test_setup.py
 ```
+
+This script will check:
+- ✓ Python version (3.10+ required)
+- ✓ Virtual environment activation
+- ✓ pydub installation
+- ✓ ffmpeg availability
+- ✓ OpenAI Whisper installation
+- ✓ Flask installation
+- ✓ NumPy installation
+
+If all checks pass, you'll see:
+```
+🎉 All checks passed! Your environment is ready to use.
+```
+
+If any checks fail, the script provides specific guidance on how to fix the issue.
 
 ## Need More Help?
 
